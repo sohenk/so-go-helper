@@ -7,6 +7,13 @@ import (
 	"github.com/gogf/gf/util/gconv"
 )
 
+/**
+* 类似php httpbuilder的函数
+* @description:
+*
+* @param {[type]} params
+* @param {[type]} parentKey
+ */
 func HttpBuildQuery(params map[string]interface{}, parentKey string) (param_str string) {
 	//fmt.Println("parentKey ", parentKey)
 	params_arr := make([]string, 0)
