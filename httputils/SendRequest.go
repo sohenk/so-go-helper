@@ -12,11 +12,10 @@ func SendRequest(method string, url string, body []byte, timeout time.Duration) 
 	if err != nil {
 		return nil, err
 	}
-
 	req.Header.Set("Content-Type", "application/json")
-	if timeout == 0 {
-		timeout = time.Millisecond * 200
-	}
+	// if timeout == 0 {
+	// 	timeout = 0
+	// }
 	client := &http.Client{
 		Timeout: timeout,
 	}
@@ -24,6 +23,8 @@ func SendRequest(method string, url string, body []byte, timeout time.Duration) 
 	if err != nil {
 		return nil, err
 	}
+
+	req.Close = true
 	defer resp.Body.Close()
 
 	bodyBytes, err := ioutil.ReadAll(resp.Body)
